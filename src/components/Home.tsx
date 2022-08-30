@@ -23,30 +23,50 @@ export const Home = () => {
   if (error) {
     <Alert severity="error">An error occured!</Alert>;
   }
+  const handleClick = () => {
+    getData();
+    console.log(data);
+  };
+
+  const handleClear = () => {
+    location.reload();
+  };
   return (
     <>
       <CssBaseline />
       <Container>
         <Typography variant="h2">Search weather by city</Typography>
         <br />
-        <input
-          id="search-input"
-          type="text"
-          placeholder="search by city"
-          onChange={(e) => {
-            setCity(e.target.value);
-          }}
-        />
-        <Button
-          variant="contained"
-          color="secondary"
-          size="large"
-          onClick={() => getData()}
-        >
-          Search
-        </Button>
+        {!data && (
+          <div>
+            <input
+              id="search-input"
+              type="text"
+              placeholder="Search by city"
+              onChange={(e) => {
+                setCity(e.target.value);
+              }}
+            />
+            <Button
+              variant="contained"
+              color="secondary"
+              size="large"
+              onClick={handleClick}
+            >
+              Search
+            </Button>{" "}
+          </div>
+        )}
         {data && (
           <>
+            <Button
+              variant="contained"
+              color="error"
+              size="large"
+              onClick={handleClear}
+            >
+              Go back to homepage
+            </Button>
             <br />
             <br />
             <Typography variant="h3">{data.getCityByName.name}</Typography>
