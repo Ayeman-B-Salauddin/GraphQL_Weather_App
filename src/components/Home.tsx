@@ -37,14 +37,14 @@ export const Home = () => {
             setCity(e.target.value);
           }}
         />
-        {/* <Button
+        <Button
           variant="contained"
           color="secondary"
           size="large"
           onClick={() => getData()}
         >
           Search
-        </Button> */}
+        </Button>
         {data && (
           <>
             <br />
